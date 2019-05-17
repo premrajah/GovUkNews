@@ -16,8 +16,38 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="5*" />
+            <RowDefinition Height="60" />
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="GOV.UK News and Communications" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="50" Foreground="#005ea5"   />
+        <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Background="#0b0c0c" BorderBrush="#005EA5" BorderThickness="0 0 0 20">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Image Source="assets/crown.png" VerticalAlignment="Center" HorizontalAlignment="Center" Width="60" Height="60" Margin="0 0 10 0" />
+                <TextBlock Text="GOV.UK/News and Communications"  FontSize="50" Foreground="#005ea5" FontWeight="Bold"  />
+            </StackPanel>
+        </Border>
+
+        <Button Grid.Row="1" Grid.Column="0" Content="Fetch" Width="200" Height="54" HorizontalAlignment="Center"  VerticalAlignment="Top" Margin="0 40 0 0" />
+        
+        <Grid Grid.Row="1" Grid.Column="1" Margin="10">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" >
+                <ItemsControl ItemsSource="{Binding PostItems}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="0 0 0 10">
+                                <TextBlock Text="{Binding Title}" FontSize="40" Foreground="#005EA5" />
+                                <TextBlock Text="Summary" FontSize="20" />
+                                <TextBlock Text="Date" FontSize="20" />
+                                <TextBlock Text="Link" FontSize="18" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </Grid>
+
+        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Copyright belongs to respective copyright holders, Information publicly avaliable on website gov.uk" />
+        </StackPanel>
+        
     </Grid>
 </Page>
